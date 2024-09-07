@@ -480,8 +480,8 @@ Below is the evolution of consumption in Canada and USA following the
 shock implemented above.
 
 ``` r
-ts.plot(cbind((100*(shock_rUS$C_CA[3:100]/shock_rUS$C_CA[1]-1)),(100*
-        (shock_rUS$C_US[3:100]/shock_rUS$C_US[1]-1))),main="Canada and USA Consumption levels",col=1:2,lwd=2, xlab = "Number of Periods after Steady State", ylab = "Consumption Deviation (%)")
+ts.plot(cbind((100*(shock_rUS$C_CA[3:60]/shock_rUS$C_CA[1]-1)),(100*
+        (shock_rUS$C_US[3:60]/shock_rUS$C_US[1]-1))),main="Canada and USA Consumption levels",col=1:2,lwd=2, xlab = "Number of Periods after Steady State", ylab = "Consumption Deviation (%)")
 legend('bottomright',legend=c("C_CA", "C_US"),col=1:2,lty=1,lwd=2)
 ```
 
@@ -852,7 +852,7 @@ shock_p <- sfcr_scenario(
   periods = nper
 )
 
-ts.plot(100*(shock_p$P[1:40]/shock_p$P[1]-1),main="Evolution of new Price Levels", ylab
+ts.plot(100*(shock_p$P[1:15]/shock_p$P[1]-1),main="Evolution of new Price Levels", ylab
         ="Price Level Deviation (%)", xlab = "Number of Periods after Steady State")
 ```
 
@@ -862,10 +862,11 @@ On the same graph, trace the evolution of real wage, nominal wage, and
 unit cost of production.
 
 ``` r
-ts.plot(cbind((100*(shock_p$W[1:40]/shock_p$W[1]-1)), (100*(shock_p$Wn[1:40]/
-shock_p$Wn[1]-1)), (100*(shock_p$UCn[1:40]/shock_p$UCn[1]-1))),main="Deviation of Marginal Cost of Production, Real, and Nominal Wages", ylim=c(-2.5,2.5),col=1:3,lwd=2, xlab = "Number of Periods after Steady State after Steady State after Steady State", ylab ="Deviation (%)")
+ts.plot(cbind((100*(shock_p$W[1:10]/shock_p$W[1]-1)), (100*(shock_p$Wn[1:10]/
+shock_p$Wn[1]-1)), (100*(shock_p$UCn[1:10]/shock_p$UCn[1]-1))),ylim=c(-2.5,2.5),col=1:3,lwd=2, xlab = "Number of Periods after Steady State", ylab ="Deviation (%)")
+title(main="Deviation of Marginal Cost of Production, Real, and Nominal Wages", adj=0, line = 1, font.main = 1)
 legend("top",legend=c("Real Wages", "Nominal Wages", "Marginal cost of
-production"), col=1:3, lty=1,lwd=2, cex=0.6, ncol=3)
+production"), col=1:3, lty=1,lwd=2, cex=0.8, ncol=3)
 ```
 
 ![](Figs/unnamed-chunk-25-1.png)<!-- -->
@@ -878,10 +879,10 @@ increasing production
 Plot the evolution of real consumption and nominal consumption:
 
 ``` r
-ts.plot(cbind((100*(shock_p$C[1:40]/shock_p$C[1]-1)), (100*(shock_p$Cn[1:40]/
-shock_p$Cn[1]-1))),main="Deviation of Real and Nominal
-Consumption",col=1:2,lwd=2, xlab = "Number of Periods after Steady State", ylab = "Deviation (%)")
-legend('right',legend=c("Real Consumption", "Nominal Consumption"),col=1:2,lty=1,lwd=2)
+ts.plot(cbind((100*(shock_p$C[1:10]/shock_p$C[1]-1)), (100*(shock_p$Cn[1:10]/
+shock_p$Cn[1]-1))),ylim=c(-2,2),col=1:2,lwd=2, xlab = "Number of Periods after Steady State", ylab = "Deviation (%)")
+title(main="Deviation of Marginal Cost of Production, Real, and Nominal Wages", adj=0, line = 1, font.main = 1)
+legend('bottomright',legend=c("Real Consumption", "Nominal Consumption"),col=1:2,lty=1,lwd=2)
 ```
 
 ![](Figs/unnamed-chunk-26-1.png)<!-- -->
@@ -915,10 +916,11 @@ shock_N <- sfcr_scenario(
 )
 
 
-ts.plot(cbind((100*(shock_N$P[1:40]/shock_N$P[1]-1)),(100*(shock_p$P[1:40]/
-        shock_p$P[1]-1))),main="Price levels Deviation after Pandemic",col=1:2,lwd=2, ylab
+ts.plot(cbind((100*(shock_N$P[1:10]/shock_N$P[1]-1)),(100*(shock_p$P[1:10]/
+        shock_p$P[1]-1))), ylim=c(-2,2),col=1:2,lwd=2, ylab
         ="Price Levels Deviation (%)", xlab = "Number of Periods after Steady State")
-legend('right',legend=c("Price levels with Pandemic", "Price level with only production inc"),col=1:2,lty=1,lwd=2)
+title(main="Price levels Deviation after Pandemic")
+legend('topright',legend=c("Price levels with Pandemic", "Price level with only production inc"),col=1:2,lty=1,lwd=2)
 ```
 
 ![](Figs/unnamed-chunk-27-1.png)<!-- -->
@@ -931,7 +933,7 @@ Finally, plot the evolution of real and nominal consumption following
 the above shock.
 
 ``` r
-ts.plot(cbind((100*(shock_N$C[1:40]/shock_N$C[1]-1)),(100*(shock_N$Cn[1:40]/
+ts.plot(cbind((100*(shock_N$C[1:15]/shock_N$C[1]-1)),(100*(shock_N$Cn[1:15]/
         shock_N$Cn[1]-1))),main="Real and Nominal Consumption after Pandemic",col=1:2,lwd=2, ylab
         ="Consumption Deviation (%)", xlab = "Number of Periods after Steady State")
 legend('topright',legend=c("Real Consumption", "Nominal Consumption"),col=1:2,lty=1,lwd=2)
