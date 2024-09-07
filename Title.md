@@ -222,7 +222,7 @@ following the shock on Ontario’s funds.
 
 ``` r
 ts.plot(cbind(model[3:7,c("Y_AB")],model[3:7,c("Y_ON")],model[3:7,c("Y_QC")],
-              model[3:7,c("AVGY")]),main="GDP for Alberta, Ontario, Quebec",col=1:4,lwd=2, xlab = "Number of Periods", ylab = "Provincial GDP")
+              model[3:7,c("AVGY")]),main="Provincial GDP's over time",col=1:4,lwd=2, xlab = "Number of Periods", ylab = "Value of Provincial GDP")
 legend('bottomright',legend=c("AB", "ON", "QC", "AVG"),col=1:4,lty=1,lwd=2)
 ```
 
@@ -256,7 +256,7 @@ shock_rho <- sfcr_scenario(
   periods = nper
 )
 
-ts.plot((100*(shock_rho$Y[1:10]/shock_rho$Y[1]-1)),main="Change in Ontario's GDP", ylab ="GDP Deviation (%)", xlab = 
+ts.plot((100*(shock_rho$Y[1:10]/shock_rho$Y[1]-1)),main="Change in Ontario's GDP after Payment Equalization", ylab ="GDP Deviation (%)", xlab = 
           "Number of periods")
 ```
 
@@ -269,9 +269,8 @@ Observe the impact of the payments of equalization on Ontario’s GDP in
 the first 10 periods:
 
 ``` r
-ts.plot(cbind(shock_ON[1:10,c("Y")],shock_rho[1:10,c("Y")]),main="GDP 
-        comparison with rho_eqz parameter",col=1:2,lwd=2, xlab = "Number of Periods")
-legend('bottomright',legend=c("rho_eqz = 0", "rho_eqz = 1"),col=1:4,lty=1,lwd=2)
+ts.plot(cbind(shock_ON[1:10,c("Y")],shock_rho[1:10,c("Y")]),main="Change in GDP implementing Payment Equalization System",col=1:2,lwd=2, xlab = "Number of Periods", ylab = "Ontario's GDP")
+legend('bottomright',legend=c("GDP with no changes", "Presence of Payment Equalization"),col=1:4,lty=1,lwd=2)
 ```
 
 ![](Figs/unnamed-chunk-9-1.png)<!-- -->
@@ -498,7 +497,7 @@ Bh_US_CA et Bh_US_US in a separate graph. \*Bh = bonds held
 ``` r
 ts.plot(cbind(shock_rUS[3:100,c("Bh_CA_CA")],shock_rUS[3:100,c("Bh_CA_US")]),
         main="Bonds in terms of CAD",col=1:2,lwd=2, xlab = "Number of Periods")
-legend('right',legend=c("Bh_CA_CA", "Bh_CA_US"),col=1:2,lty=1,lwd=2)
+legend('right',legend=c("Canadian Bonds held by Canadians", "Canadian Bonds held by Americans"),col=1:2,lty=1,lwd=2)
 ```
 
 ![](Figs/unnamed-chunk-16-1.png)<!-- -->
@@ -506,7 +505,7 @@ legend('right',legend=c("Bh_CA_CA", "Bh_CA_US"),col=1:2,lty=1,lwd=2)
 ``` r
 ts.plot(cbind(shock_rUS[3:100,c("Bh_US_CA")],shock_rUS[3:100,c("Bh_US_US")]),
         main="Bonds in terms of USD",col=1:2,lwd=2, xlab = "Number of Periods")
-legend('right',legend=c("Bh_US_CA", "Bh_US_US"),col=1:2,lty=1,lwd=2)
+legend('right',legend=c("American Bonds held by Canadians", "American Bonds held by Americans"),col=1:2,lty=1,lwd=2)
 ```
 
 ![](Figs/unnamed-chunk-16-2.png)<!-- -->
@@ -864,9 +863,9 @@ unit cost of production.
 
 ``` r
 ts.plot(cbind((100*(shock_p$W[1:40]/shock_p$W[1]-1)), (100*(shock_p$Wn[1:40]/
-shock_p$Wn[1]-1)), (100*(shock_p$UCn[1:40]/shock_p$UCn[1]-1))),main="Cost of production, Real and Nominal Wages",col=1:3,lwd=2, xlab = "Number of Periods")
-legend('right',legend=c("Real Wages", "Nominal Wages", "marginal cost of
-production"),col=1:3,lty=1,lwd=2)
+shock_p$Wn[1]-1)), (100*(shock_p$UCn[1:40]/shock_p$UCn[1]-1))),main="Deviation of Marginal Cost of Production, Real, and Nominal Wages",col=1:3,lwd=2, xlab = "Number of Periods", ylab ="Deviation (%)")
+legend(x=33.5, y=0.7, legend=c("Real Wages", "Nominal Wages", "Marginal cost of
+production"), col=1:3, lty=1,lwd=2, cex=0.6)
 ```
 
 ![](Figs/unnamed-chunk-25-1.png)<!-- -->
@@ -880,7 +879,7 @@ Plot the evolution of real consumption and nominal consumption:
 
 ``` r
 ts.plot(cbind((100*(shock_p$C[1:40]/shock_p$C[1]-1)), (100*(shock_p$Cn[1:40]/
-shock_p$Cn[1]-1))),main="Real and Nominal
+shock_p$Cn[1]-1))),main="Deviation of Real and Nominal
 Consumption",col=1:2,lwd=2, xlab = "Number of Periods", ylab = "Deviation (%)")
 legend('right',legend=c("Real Consumption", "Nominal Consumption"),col=1:2,lty=1,lwd=2)
 ```
@@ -917,7 +916,7 @@ shock_N <- sfcr_scenario(
 
 
 ts.plot(cbind((100*(shock_N$P[1:40]/shock_N$P[1]-1)),(100*(shock_p$P[1:40]/
-        shock_p$P[1]-1))),main="Price levels after Pandemic",col=1:2,lwd=2, ylab
+        shock_p$P[1]-1))),main="Price levels Deviation after Pandemic",col=1:2,lwd=2, ylab
         ="Price Levels Deviation (%)", xlab = "Number of periods")
 legend('right',legend=c("Price levels with Pandemic", "Price level with only production inc"),col=1:2,lty=1,lwd=2)
 ```
