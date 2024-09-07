@@ -864,7 +864,7 @@ unit cost of production.
 ``` r
 ts.plot(cbind((100*(shock_p$W[1:40]/shock_p$W[1]-1)), (100*(shock_p$Wn[1:40]/
 shock_p$Wn[1]-1)), (100*(shock_p$UCn[1:40]/shock_p$UCn[1]-1))),main="Deviation of Marginal Cost of Production, Real, and Nominal Wages",col=1:3,lwd=2, xlab = "Number of Periods", ylab ="Deviation (%)")
-legend(x=33.5, y=0.7, legend=c("Real Wages", "Nominal Wages", "Marginal cost of
+legend(x=33.25, y=0.7, legend=c("Real Wages", "Nominal Wages", "Marginal cost of
 production"), col=1:3, lty=1,lwd=2, cex=0.6)
 ```
 
