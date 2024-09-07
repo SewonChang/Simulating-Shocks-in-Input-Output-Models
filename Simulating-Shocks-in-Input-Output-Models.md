@@ -169,8 +169,8 @@ shock_AB <- sfcr_scenario(
 )
 
 
-ts.plot(100*(shock_AB$Y[1:10]/shock_AB$Y[1]-1),main="Deviation of Alberta's GDB from steady state",
-        ylab ="GDP Deviation (%)", xlab = "Number of periods")
+ts.plot(100*(shock_AB$Y[1:10]/shock_AB$Y[1]-1),main="Deviation of Alberta's GDP from steady state",
+        ylab ="GDP Deviation (%)", xlab = "Number of Periods after Steady State")
 ```
 
 ![](Simulating-Shocks-in-Input-Output-Models_files/figure-gfm/global_options-1.png)<!-- -->
@@ -194,9 +194,9 @@ shock_ON <- sfcr_scenario(
 )
 
 
-ts.plot((100*(shock_ON$Y[1:10]/shock_ON$Y[1]-1)),main="Deviation of Ontario's GDB from steady state",
+ts.plot((100*(shock_ON$Y[1:10]/shock_ON$Y[1]-1)),main="Deviation of Ontario's GDP from steady state",
         ylab ="GDP Deviation (%)", xlab = 
-          "Number of periods")
+          "Number of Periods after Steady State")
 ```
 
 ![](Figs/unnamed-chunk-5-1.png)<!-- -->
@@ -205,7 +205,7 @@ Below is a comparison of the total GDP up to period 6 with both AB and
 ON receiving a 10% financial increase in funds.
 
 ``` r
-ts.plot(cbind(shock_AB[1:6,c("Y_AB")],shock_AB[1:6,c("Y_ON")]),main="GDP Comparison of Ontario and Alberta",col=1:2,lwd=2, xlab = "Number of Periods", ylab = "Provincial GDP")
+ts.plot(cbind(shock_AB[1:6,c("Y_AB")],shock_AB[1:6,c("Y_ON")]),main="GDP Comparison of Ontario and Alberta",col=1:2,lwd=2, xlab = "Number of Periods after Steady State", ylab = "Provincial GDP")
 legend('bottomright',legend=c("Y_AB", "Y_ON"),col=1:4,lty=1,lwd=2)
 ```
 
@@ -222,7 +222,7 @@ following the shock on Ontario’s funds.
 
 ``` r
 ts.plot(cbind(model[3:7,c("Y_AB")],model[3:7,c("Y_ON")],model[3:7,c("Y_QC")],
-              model[3:7,c("AVGY")]),main="Provincial GDP's over time",col=1:4,lwd=2, xlab = "Number of Periods", ylab = "Value of Provincial GDP")
+              model[3:7,c("AVGY")]),main="Provincial GDP's over time",col=1:4,lwd=2, xlab = "Number of Periods after Steady State", ylab = "Value of Provincial GDP")
 legend('bottomright',legend=c("AB", "ON", "QC", "AVG"),col=1:4,lty=1,lwd=2)
 ```
 
@@ -257,7 +257,7 @@ shock_rho <- sfcr_scenario(
 )
 
 ts.plot((100*(shock_rho$Y[1:10]/shock_rho$Y[1]-1)),main="Change in Ontario's GDP after Payment Equalization", ylab ="GDP Deviation (%)", xlab = 
-          "Number of periods")
+          "Number of Periods after Steady State")
 ```
 
 ![](Figs/unnamed-chunk-8-1.png)<!-- -->
@@ -269,7 +269,7 @@ Observe the impact of the payments of equalization on Ontario’s GDP in
 the first 10 periods:
 
 ``` r
-ts.plot(cbind(shock_ON[1:10,c("Y")],shock_rho[1:10,c("Y")]),main="Change in GDP implementing Payment Equalization System",col=1:2,lwd=2, xlab = "Number of Periods", ylab = "Ontario's GDP")
+ts.plot(cbind(shock_ON[1:10,c("Y")],shock_rho[1:10,c("Y")]),main="Change in GDP implementing Payment Equalization System",col=1:2,lwd=2, xlab = "Number of Periods after Steady State", ylab = "Ontario's GDP")
 legend('bottomright',legend=c("GDP with no changes", "Presence of Payment Equalization"),col=1:4,lty=1,lwd=2)
 ```
 
@@ -481,7 +481,7 @@ shock implemented above.
 
 ``` r
 ts.plot(cbind((100*(shock_rUS$C_CA[3:100]/shock_rUS$C_CA[1]-1)),(100*
-        (shock_rUS$C_US[3:100]/shock_rUS$C_US[1]-1))),main="Canada and USA Consumption levels",col=1:2,lwd=2, xlab = "Number of Periods", ylab = "Consumption Deviation (%)")
+        (shock_rUS$C_US[3:100]/shock_rUS$C_US[1]-1))),main="Canada and USA Consumption levels",col=1:2,lwd=2, xlab = "Number of Periods after Steady State", ylab = "Consumption Deviation (%)")
 legend('bottomright',legend=c("C_CA", "C_US"),col=1:2,lty=1,lwd=2)
 ```
 
@@ -496,7 +496,7 @@ Bh_US_CA et Bh_US_US in a separate graph. \*Bh = bonds held
 
 ``` r
 ts.plot(cbind(shock_rUS[3:100,c("Bh_CA_CA")],shock_rUS[3:100,c("Bh_CA_US")]),
-        main="Bonds in terms of CAD",col=1:2,lwd=2, xlab = "Number of Periods")
+        main="Bonds in terms of CAD",col=1:2,lwd=2, xlab = "Number of Periods after Steady State")
 legend('right',legend=c("Canadian Bonds held by Canadians", "Canadian Bonds held by Americans"),col=1:2,lty=1,lwd=2)
 ```
 
@@ -504,7 +504,7 @@ legend('right',legend=c("Canadian Bonds held by Canadians", "Canadian Bonds held
 
 ``` r
 ts.plot(cbind(shock_rUS[3:100,c("Bh_US_CA")],shock_rUS[3:100,c("Bh_US_US")]),
-        main="Bonds in terms of USD",col=1:2,lwd=2, xlab = "Number of Periods")
+        main="Bonds in terms of USD",col=1:2,lwd=2, xlab = "Number of Periods after Steady State")
 legend('right',legend=c("American Bonds held by Canadians", "American Bonds held by Americans"),col=1:2,lty=1,lwd=2)
 ```
 
@@ -629,7 +629,7 @@ the initial and alternative models.
 
 ``` r
 ts.plot(cbind((100*(shock_i$C_CA[1:100]/shock_i$C_CA[1]-1)),(100*(model2$C_CA[1:100]
-/model2$C_CA[1]-1))),main="Canada Consumption of initial and alternative models",col=1:2,lwd=2, xlab = "Number of Periods", ylab ="Consumption Deviation (%)")
+/model2$C_CA[1]-1))),main="Canada Consumption of initial and alternative models",col=1:2,lwd=2, xlab = "Number of Periods after Steady State", ylab ="Consumption Deviation (%)")
 legend('right',legend=c("C with shock", "Original C"),col=1:2,lty=1,lwd=2)
 ```
 
@@ -853,7 +853,7 @@ shock_p <- sfcr_scenario(
 )
 
 ts.plot(100*(shock_p$P[1:40]/shock_p$P[1]-1),main="Evolution of new Price Levels", ylab
-        ="Price Level Deviation (%)", xlab = "Number of periods")
+        ="Price Level Deviation (%)", xlab = "Number of Periods after Steady State")
 ```
 
 ![](Figs/unnamed-chunk-24-1.png)<!-- -->
@@ -863,9 +863,9 @@ unit cost of production.
 
 ``` r
 ts.plot(cbind((100*(shock_p$W[1:40]/shock_p$W[1]-1)), (100*(shock_p$Wn[1:40]/
-shock_p$Wn[1]-1)), (100*(shock_p$UCn[1:40]/shock_p$UCn[1]-1))),main="Deviation of Marginal Cost of Production, Real, and Nominal Wages",col=1:3,lwd=2, xlab = "Number of Periods", ylab ="Deviation (%)")
-legend(x=33.5, y=0.7, legend=c("Real Wages", "Nominal Wages", "Marginal cost of
-production"), col=1:3, lty=1,lwd=2, cex=0.6)
+shock_p$Wn[1]-1)), (100*(shock_p$UCn[1:40]/shock_p$UCn[1]-1))),main="Deviation of Marginal Cost of Production, Real, and Nominal Wages", ylim=c(-2.5,2.5),col=1:3,lwd=2, xlab = "Number of Periods after Steady State after Steady State after Steady State", ylab ="Deviation (%)")
+legend("top",legend=c("Real Wages", "Nominal Wages", "Marginal cost of
+production"), col=1:3, lty=1,lwd=2, cex=0.6, ncol=3)
 ```
 
 ![](Figs/unnamed-chunk-25-1.png)<!-- -->
@@ -880,7 +880,7 @@ Plot the evolution of real consumption and nominal consumption:
 ``` r
 ts.plot(cbind((100*(shock_p$C[1:40]/shock_p$C[1]-1)), (100*(shock_p$Cn[1:40]/
 shock_p$Cn[1]-1))),main="Deviation of Real and Nominal
-Consumption",col=1:2,lwd=2, xlab = "Number of Periods", ylab = "Deviation (%)")
+Consumption",col=1:2,lwd=2, xlab = "Number of Periods after Steady State", ylab = "Deviation (%)")
 legend('right',legend=c("Real Consumption", "Nominal Consumption"),col=1:2,lty=1,lwd=2)
 ```
 
@@ -917,7 +917,7 @@ shock_N <- sfcr_scenario(
 
 ts.plot(cbind((100*(shock_N$P[1:40]/shock_N$P[1]-1)),(100*(shock_p$P[1:40]/
         shock_p$P[1]-1))),main="Price levels Deviation after Pandemic",col=1:2,lwd=2, ylab
-        ="Price Levels Deviation (%)", xlab = "Number of periods")
+        ="Price Levels Deviation (%)", xlab = "Number of Periods after Steady State")
 legend('right',legend=c("Price levels with Pandemic", "Price level with only production inc"),col=1:2,lty=1,lwd=2)
 ```
 
@@ -933,7 +933,7 @@ the above shock.
 ``` r
 ts.plot(cbind((100*(shock_N$C[1:40]/shock_N$C[1]-1)),(100*(shock_N$Cn[1:40]/
         shock_N$Cn[1]-1))),main="Real and Nominal Consumption after Pandemic",col=1:2,lwd=2, ylab
-        ="Consumption Deviation (%)", xlab = "Number of periods")
+        ="Consumption Deviation (%)", xlab = "Number of Periods after Steady State")
 legend('topright',legend=c("Real Consumption", "Nominal Consumption"),col=1:2,lty=1,lwd=2)
 ```
 
